@@ -51,9 +51,11 @@ def get_crops(meters_ahead: float, meters_behind: float,
     :return: Tuple of row and column slices to crop image.
     """
 
-    row_crop = slice(0, int((meters_ahead + meters_behind) / resolution))
-    col_crop = slice(int(image_side_length_pixels / 2 - (meters_left / resolution)),
-                     int(image_side_length_pixels / 2 + (meters_right / resolution)))
+    #row_crop = slice(0, int((meters_ahead + meters_behind) / resolution))
+    row_crop = slice(int(image_side_length_pixels / 2 - (meters_ahead  / resolution)),
+                     int(image_side_length_pixels / 2 + (meters_behind / resolution)))
+    col_crop = slice(int(image_side_length_pixels / 2 - (meters_left   / resolution)),
+                     int(image_side_length_pixels / 2 + (meters_right  / resolution)))
 
     return row_crop, col_crop
 
